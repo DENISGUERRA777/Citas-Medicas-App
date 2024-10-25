@@ -1,0 +1,33 @@
+body{
+  background-color: black;
+}
+#root {
+  width: 70%;
+  margin: 0 auto;
+  padding: 3rem;
+  text-align: center;
+  background-color: rgb(133, 87, 185);
+  border-radius: 8px;
+}
+.contenedor{
+  overflow-y: scroll;
+  height: 90vh;
+}
+.contenedor::-webkit-scrollbar{
+  display: none;
+}
+.form-container .row div p{
+  color: red;
+}
+main{
+ 
+}
+.card-continer{
+  margin: 0 auto;
+  pad: 0 auto;
+  width: 40%;
+  margin-top: 5%;
+}
+
+
+
