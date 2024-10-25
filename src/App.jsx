@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Myprovider>
-      <BrowserRouter>
+      <BrowserRouter basename="/Kodigo-Music-App/">
           <Routes>
             <Route index path='/' element={ <Home />} />
             <Route index path='/appointment' element={ <FormComponent />} />
