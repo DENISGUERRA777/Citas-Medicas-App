@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Myprovider>
-      <BrowserRouter basename="/Kodigo-Music-App/">
+      <BrowserRouter basename="/Citas-Medicas-App/">
           <Routes>
             <Route index path='/' element={ <Home />} />
             <Route index path='/appointment' element={ <FormComponent />} />
