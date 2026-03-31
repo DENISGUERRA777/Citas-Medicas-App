@@ -1,7 +1,3 @@
-import { useContext, useState } from "react"
-import { FormComponent } from "./components/FormComponent";
-
-import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () =>  {
