@@ -1,10 +1,9 @@
 import { useState } from "react"
-import { collection, doc,  getDocs } from "firebase/firestore"; 
+import { collection, getDocs } from "firebase/firestore"; 
 import { db } from "../../../firebase/config";
 import { Link } from "react-router-dom";
 export const Book = () => {
     const [dataCitas,setDataCitas] = useState([]);
-    const [especialidadState,setEspecialidadState] = useState();
     
     const getCitas = async (especialidad) => {
         const citasCollecion = await getDocs(collection(db, especialidad))
@@ -13,11 +12,7 @@ export const Book = () => {
     }
 
     const setEspecialidad = async(e) => {
-        
-        setEspecialidadState(e.target.innerText); 
-        getCitas(especialidadState);
-        console.log("hola")
-        console.log(dataCitas)
+        getCitas(e.target.innerText);
     };
 
     return(
@@ -25,7 +20,7 @@ export const Book = () => {
             <header >
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
-                        <Link className="navbar-brand" to="/" >CLinia Family Care</Link>
+                        <Link className="navbar-brand" to="/" >Clinica Family Care</Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                         </button>

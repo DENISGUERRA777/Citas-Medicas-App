@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react"
 import {useForm} from 'react-hook-form';
-import { collection, doc, setDoc, addDoc, getDocs } from "firebase/firestore"; 
+import { collection, doc, setDoc, getDocs } from "firebase/firestore"; 
 import { db } from "../../../firebase/config";
 
 
 export const FormComponent = () => {
 
-    const {register,handleSubmit,reset,setValue, formState: { errors }} = useForm()
-    const [submitState, setSubmitState] = useState(false);
+    const {register, handleSubmit, formState: { errors }} = useForm()
     const [disponibles, setDisponibles] = useState([]);
     const [registerEspecialidad, setRegisterEspecialidad] = useState(false);
    
@@ -21,7 +20,7 @@ export const FormComponent = () => {
             {
                 name: data.name,
                 dui: parseInt(data.dui),
-                email: parseInt(data.email)
+                email: data.email
             });
             console.log(response)   
             console.log(data.email) 
@@ -48,7 +47,9 @@ export const FormComponent = () => {
     }
     
     useEffect(() => {
-        {registerEspecialidad === true && alert("Lo sentimos, cupo lleno. Tendrá que escoger otro horario.")}
+        if (registerEspecialidad === true) {
+            alert("Lo sentimos, cupo lleno. Tendrá que escoger otro horario.");
+        }
     }, [registerEspecialidad]);
     
     return(
@@ -62,7 +63,7 @@ export const FormComponent = () => {
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="inputDui4" className="form-label">Dui</label>
-                    <input type="number" className="form-control" id="inputDui4" placeholder="sin guion"{...register('dui', {required: true})}/>
+                    <input type="number" className="form-control" id="inputDui4" placeholder="sin guion" {...register('dui', {required: true})}/>
                     {errors?.dui?.type === "required" && <p>This field is required</p>}
                 </div>
                 <div className="col-4">
@@ -112,7 +113,7 @@ export const FormComponent = () => {
                     </div>
                 </div>
                 <div className="col-12">
-                    <button type="submit" className="sutmit btn btn-primary" onClick={()=>{setSubmitState(true)}} >  Sign in</button>
+                    <button type="submit" className="submit btn btn-primary">  Sign in</button>
                     
 
                 </div>
